@@ -1,0 +1,9 @@
+{
+  "name": "edgesense-iot-demo",
+  "version": "1.0.0",
+  "description": "Demonstração didática de IoT e Edge Computing com processamento local e remoto simulado.",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "dependencies": { "express": "^4.21.2" },
+  "engines": { "node": ">=18" }
+}

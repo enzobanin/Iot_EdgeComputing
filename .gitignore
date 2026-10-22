@@ -1,0 +1,32 @@
+# Dependências instaladas pelo npm
+node_modules/
+
+# Variáveis de ambiente e dados sensíveis
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Arquivos temporários e do sistema
+tmp/
+temp/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Configurações locais de editores
+.vscode/
+.idea/
+
+# Arquivos de cobertura de testes
+coverage/
+
+# Arquivos gerados de build
+dist/
+build/
