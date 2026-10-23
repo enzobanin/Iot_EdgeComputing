@@ -980,4 +980,12 @@ footer b {
     .flow-line.blocked>span::after {
         border-top-color: #64748b;
     }
+
+    #sensorFlow>span {
+        background: red !important;
+    }
+
+    #sensorFlow>span::after {
+        border-top-color: red !important;
+    }
 }
