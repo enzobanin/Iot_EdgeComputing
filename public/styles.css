@@ -558,7 +558,7 @@ body {
 .flow-line>span {
     height: 100%;
     width: 1px;
-    background: linear-gradient(var(--accent), #3a586d);
+    background: red;
     position: relative
 }
 
@@ -987,5 +987,24 @@ footer b {
 
     #sensorFlow>span::after {
         border-top-color: red !important;
+    }
+
+    /* Aparência padrão das setas */
+    .flow-line>span {
+        background: linear-gradient(var(--accent), #3a586d);
+    }
+
+    .flow-line>span::after {
+        border-top-color: var(--accent);
+        left: -2px;
+    }
+
+    /* Sensor sem conexão com a nuvem */
+    .flow-line.disconnected>span {
+        background: #ff5263;
+    }
+
+    .flow-line.disconnected>span::after {
+        border-top-color: #ff5263;
     }
 }
