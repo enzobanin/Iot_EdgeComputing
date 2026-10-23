@@ -558,7 +558,7 @@ body {
 .flow-line>span {
     height: 100%;
     width: 1px;
-    background: red;
+    background: linear-gradient(var(--accent), #3a586d);
     position: relative
 }
 
@@ -566,10 +566,10 @@ body {
     content: "";
     position: absolute;
     bottom: 0;
-    left: -3px;
+    left: -2px;
     border-left: 3px solid transparent;
     border-right: 3px solid transparent;
-    border-top: 5px solid var(--accent)
+    border-top: 5px solid var(--accent);
 }
 
 .flow-line small {
@@ -930,81 +930,39 @@ footer b {
     footer {
         flex-direction: column
     }
+}
+/* Aparência padrão das setas */
+.flow-line > span {
+    background: linear-gradient(var(--accent), #3a586d);
+}
 
-    /* Indica que a comunicação com a nuvem foi interrompida. */
-    .flow-line.disconnected>span {
-        background: #ff5263;
-    }
+.flow-line > span::after {
+    border-top-color: var(--accent);
+    left: -2px;
+}
 
-    /* Deixa a ponta da seta vermelha também. */
-    .flow-line.disconnected>span::after {
-        border-top-color: #ff5263;
-    }
+/* Cloud sem internet: seta de entrada vermelha */
+.flow-line.disconnected > span {
+    background: #ff5263;
+}
 
-    /* A descrição explica que os dados não estão passando. */
-    .flow-line.disconnected small {
-        color: #ff5263;
-    }
+.flow-line.disconnected > span::after {
+    border-top-color: #ff5263;
+}
 
-    /* Indica que o resultado não chegou à ação de segurança. */
-    .flow-line.blocked>span {
-        background: #64748b;
-    }
+.flow-line.disconnected small {
+    color: #ff5263;
+}
 
-    /* A ponta da seta também fica cinza. */
-    .flow-line.blocked>span::after {
-        border-top-color: #64748b;
-    }
+/* Resultado bloqueado: seta cinza */
+.flow-line.blocked > span {
+    background: #64748b;
+}
 
-    /* Texto da comunicação bloqueada. */
-    .flow-line.blocked small {
-        color: #94a3b8;
-    }
+.flow-line.blocked > span::after {
+    border-top-color: #64748b;
+}
 
-    /* Linha vermelha quando a conexão com a nuvem cai */
-    .flow-line.disconnected>span {
-        background: #ff5263;
-    }
-
-    /* Ponta da seta vermelha */
-    .flow-line.disconnected>span::after {
-        border-top-color: #ff5263;
-    }
-
-    /* Linha cinza quando o resultado não chega à ação */
-    .flow-line.blocked>span {
-        background: #64748b;
-    }
-
-    /* Ponta da seta cinza */
-    .flow-line.blocked>span::after {
-        border-top-color: #64748b;
-    }
-
-    #sensorFlow>span {
-        background: red !important;
-    }
-
-    #sensorFlow>span::after {
-        border-top-color: red !important;
-    }
-
-    /* Aparência padrão das setas */
-    .flow-line>span {
-        background: linear-gradient(var(--accent), #3a586d);
-    }
-
-    .flow-line>span::after {
-        border-top-color: var(--accent);
-        left: -2px;
-    }
-
-    /* Sensor sem conexão com a nuvem */
-    .flow-line.disconnected>span {
-        background: #ff5263;
-    }
-
-    .flow-line.disconnected>span::after {
-        border-top-color: #ff5263;
-    }
+.flow-line.blocked small {
+    color: #94a3b8;
 }
