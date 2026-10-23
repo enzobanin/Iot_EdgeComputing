@@ -961,4 +961,23 @@ footer b {
         color: #94a3b8;
     }
 
+    /* Linha vermelha quando a conexão com a nuvem cai */
+    .flow-line.disconnected>span {
+        background: #ff5263;
+    }
+
+    /* Ponta da seta vermelha */
+    .flow-line.disconnected>span::after {
+        border-top-color: #ff5263;
+    }
+
+    /* Linha cinza quando o resultado não chega à ação */
+    .flow-line.blocked>span {
+        background: #64748b;
+    }
+
+    /* Ponta da seta cinza */
+    .flow-line.blocked>span::after {
+        border-top-color: #64748b;
+    }
 }
