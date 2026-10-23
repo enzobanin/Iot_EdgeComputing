@@ -119,7 +119,7 @@ function renderMode() {
 
   $('processorDescription').textContent = edge
     ? 'Aplica a regra no local'
-    : 'API Node.js calcula a decisão';
+    : 'O servidor analisa a leitura';
 
   $('actionNodeDescription').textContent = edge
     ? 'Decisão sem depender da internet'
@@ -153,7 +153,7 @@ function renderMode() {
     ? 'No modo Edge, a regra é executada localmente e continua funcionando sem internet.'
     : cloudOffline
       ? 'Sem internet, a leitura não chega à nuvem e a decisão remota não pode ser executada.'
-      : 'No modo Cloud, a leitura é enviada à API Node.js, que calcula a decisão e devolve o resultado.';
+      : 'No modo Cloud, a leitura é enviada à nuvem, que calcula a decisão e devolve o resultado.';
 }
 
 
@@ -177,7 +177,7 @@ function renderDecision(result, unavailable = false) {
   box.querySelector('b').textContent = unavailable ? 'Servidor indisponível' : result.alert ? 'Alerta térmico' : 'Operação normal';
   box.querySelector('p').textContent = unavailable
     ? 'A conexão caiu; o processamento remoto não pode responder.'
-    : `${result.action}. Processado por: ${result.processedBy}.`;
+    : `${result.action}. ${result.processedBy}.`;
 }
 
 // Modo Edge: a regra é executada diretamente no cliente, representando o processamento no dispositivo.
@@ -186,7 +186,7 @@ function decideLocally() {
   return {
     alert,
     action: alert ? 'Acionar resfriamento e gerar alerta' : 'Manter operação normal',
-    processedBy: 'Cliente local (simulação Edge)'
+    processedBy: 'Decisão processada localmente'
   };
 }
 

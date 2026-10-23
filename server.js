@@ -33,7 +33,7 @@ app.post('/api/cloud-decision', (req, res) => {
     threshold,
     alert,
     action: alert ? 'Acionar resfriamento e gerar alerta' : 'Manter operação normal',
-    processedBy: 'Backend Node.js (servidor remoto simulado)',
+    processedBy: 'Decisão processada na nuvem',
     processedAt: new Date().toISOString()
   });
 });
