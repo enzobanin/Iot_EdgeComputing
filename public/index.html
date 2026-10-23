@@ -93,19 +93,29 @@
           <div class="architecture" id="architecture">
             <div class="architecture-node"><span class="node-icon">◉</span><span><b>Sensor IoT</b><small>Gera a
                   leitura</small></span><span class="node-check">✓</span></div>
-            <div class="flow-line"><span></span><small id="flowLabel">Dados seguem para processamento local</small>
-            </div>
-            <div class="architecture-node active-node" id="processorNode"><span class="node-icon">▣</span><span><b
-                  id="processorName">Dispositivo / Edge</b><small id="processorDescription">Aplica a regra no
-                  local</small></span><span class="node-check">✓</span></div>
+
+            <!-- Seta entre o sensor e o processamento -->
             <div class="flow-line" id="sensorFlow">
               <span></span>
               <small id="flowLabel">Dados seguem para processamento local</small>
             </div>
+
+            <!-- Componente que processa a leitura -->
+            <div class="architecture-node active-node" id="processorNode">
+              <span class="node-icon">▣</span>
+              <span>
+                <b id="processorName">Dispositivo / Edge</b>
+                <small id="processorDescription">Aplica a regra no local</small>
+              </span>
+              <span class="node-check">✓</span>
+            </div>
+
+            <!-- Seta entre o processamento e a ação de segurança -->
             <div class="flow-line" id="actionFlow">
               <span></span>
               <small id="actionFlowLabel">Resultado da regra</small>
             </div>
+
             <div class="architecture-node"><span class="node-icon">⚙</span><span><b>Ação de segurança</b><small
                   id="actionNodeDescription">Decisão executada localmente</small></span><span
                 class="node-check">✓</span></div>

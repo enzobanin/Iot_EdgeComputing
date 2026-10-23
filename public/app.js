@@ -115,7 +115,7 @@ function renderMode() {
 
   $('processorName').textContent = edge
     ? 'Dispositivo / Edge'
-    : 'Backend / Cloud';
+    : 'Cloud';
 
   $('processorDescription').textContent = edge
     ? 'Aplica a regra no local'
