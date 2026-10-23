@@ -930,4 +930,35 @@ footer b {
     footer {
         flex-direction: column
     }
+
+    /* Indica que a comunicação com a nuvem foi interrompida. */
+    .flow-line.disconnected>span {
+        background: #ff5263;
+    }
+
+    /* Deixa a ponta da seta vermelha também. */
+    .flow-line.disconnected>span::after {
+        border-top-color: #ff5263;
+    }
+
+    /* A descrição explica que os dados não estão passando. */
+    .flow-line.disconnected small {
+        color: #ff5263;
+    }
+
+    /* Indica que o resultado não chegou à ação de segurança. */
+    .flow-line.blocked>span {
+        background: #64748b;
+    }
+
+    /* A ponta da seta também fica cinza. */
+    .flow-line.blocked>span::after {
+        border-top-color: #64748b;
+    }
+
+    /* Texto da comunicação bloqueada. */
+    .flow-line.blocked small {
+        color: #94a3b8;
+    }
+
 }

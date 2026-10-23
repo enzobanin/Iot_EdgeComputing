@@ -91,22 +91,71 @@ function renderEvents() {
 }
 
 // Atualiza os rótulos e o diagrama conforme o modo selecionado.
+
 function renderMode() {
+  // Atualiza o destaque do botão Edge ou Cloud.
   document.querySelectorAll('.mode-button').forEach((button) => {
     const selected = button.dataset.mode === state.mode;
     button.classList.toggle('selected', selected);
     button.setAttribute('aria-pressed', String(selected));
   });
+
+  // Verifica qual modo de processamento está ativo.
   const edge = state.mode === 'edge';
-  $('flowLabel').textContent = edge ? 'Dados seguem para processamento local' : 'Leitura enviada pela rede ao servidor';
-  $('processorName').textContent = edge ? 'Dispositivo / Edge' : 'Backend / Cloud';
-  $('processorDescription').textContent = edge ? 'Aplica a regra no local' : 'API Node.js calcula a decisão';
-  $('actionNodeDescription').textContent = edge ? 'Decisão sem depender da internet' : 'Resultado devolvido pelo servidor';
+
+  // Identifica se a comunicação com a nuvem está indisponível.
+  const cloudOffline = !edge && !state.internet;
+
+  // Atualiza os nomes e as descrições dos componentes.
+  $('flowLabel').textContent = edge
+    ? 'Dados seguem para processamento local'
+    : cloudOffline
+      ? 'SEM CONEXÃO: dados não chegam à nuvem'
+      : 'Leitura enviada pela rede ao servidor';
+
+  $('processorName').textContent = edge
+    ? 'Dispositivo / Edge'
+    : 'Backend / Cloud';
+
+  $('processorDescription').textContent = edge
+    ? 'Aplica a regra no local'
+    : 'API Node.js calcula a decisão';
+
+  $('actionNodeDescription').textContent = edge
+    ? 'Decisão sem depender da internet'
+    : cloudOffline
+      ? 'Aguardando resultado do servidor'
+      : 'Resultado devolvido pelo servidor';
+
+  // Atualiza a descrição da segunda seta.
+  $('actionFlowLabel').textContent = cloudOffline
+    ? 'BLOQUEADO: nenhum resultado recebido'
+    : 'Resultado da regra';
+
+  // Seleciona as duas setas do diagrama.
+  const sensorFlow = $('sensorFlow');
+  const actionFlow = $('actionFlow');
+
+  // No modo Cloud sem internet, a primeira seta fica vermelha.
+  sensorFlow.classList.toggle('disconnected', cloudOffline);
+
+  // Sem resposta da nuvem, o caminho até a ação fica bloqueado.
+  actionFlow.classList.toggle('blocked', cloudOffline);
+
+  // Destaca o componente que consegue processar os dados.
+  $('processorNode').classList.toggle(
+    'active-node',
+    edge || state.internet
+  );
+
+  // Atualiza a explicação apresentada abaixo do diagrama.
   $('modeNote').textContent = edge
-    ? 'No modo Edge, a regra é executada neste cliente de demonstração; não depende da API para decidir.'
-    : 'No modo Cloud, a leitura é enviada à API Node.js. Sem conexão, o servidor não consegue calcular a decisão.';
-  $('processorNode').classList.toggle('active-node', edge || state.internet);
+    ? 'No modo Edge, a regra é executada localmente e continua funcionando sem internet.'
+    : cloudOffline
+      ? 'Sem internet, a leitura não chega à nuvem e a decisão remota não pode ser executada.'
+      : 'No modo Cloud, a leitura é enviada à API Node.js, que calcula a decisão e devolve o resultado.';
 }
+
 
 // Atualiza o indicador de conexão no topo e o botão de simulação.
 function renderInternet() {

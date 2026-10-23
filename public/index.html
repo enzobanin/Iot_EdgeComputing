@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8">
   <!-- Faz o layout se adaptar a celulares, tablets e computadores. -->
@@ -8,6 +9,7 @@
   <title>EdgeSense | IoT + Edge Computing</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <div class="app-shell">
     <header class="topbar">
@@ -22,7 +24,6 @@
         <div>
           <p class="eyebrow">INDÚSTRIA INTELIGENTE</p>
           <h1>Decisões inteligentes,<br><span>mais perto do dispositivo.</span></h1>
-          <p class="intro-copy">Simule um sensor IoT, provoque um alerta térmico e compare o processamento local (Edge) com o processamento em um servidor (Cloud).</p>
         </div>
         <div class="intro-chip"><span class="chip-icon">⌘</span><span>IoT <b>+</b> Edge Computing</span></div>
       </section>
@@ -31,7 +32,8 @@
         <article class="metric-card">
           <div class="metric-heading"><span>Temperatura atual</span><span class="metric-symbol">◉</span></div>
           <div class="metric-value"><strong id="temperatureValue">28</strong><span>°C</span></div>
-          <div class="metric-foot"><span id="temperatureStatus" class="status-pill normal">● Normal</span><span>Sensor virtual #01</span></div>
+          <div class="metric-foot"><span id="temperatureStatus" class="status-pill normal">● Normal</span><span>Sensor
+              virtual #01</span></div>
         </article>
         <article class="metric-card">
           <div class="metric-heading"><span>Limite de segurança</span><span class="metric-symbol">⌁</span></div>
@@ -41,22 +43,29 @@
         <article class="metric-card">
           <div class="metric-heading"><span>Conectividade</span><span class="metric-symbol">⌁</span></div>
           <div class="metric-value connection-value" id="connectionValue">Online</div>
-          <div class="metric-foot"><span id="connectionFoot">Servidor acessível</span><span class="connection-indicator" id="connectionIndicator"></span></div>
+          <div class="metric-foot"><span id="connectionFoot">Servidor acessível</span><span class="connection-indicator"
+              id="connectionIndicator"></span></div>
         </article>
       </section>
 
       <section class="main-grid">
         <article class="panel sensor-panel">
           <div class="panel-heading">
-            <div><p class="eyebrow">01 / DISPOSITIVO</p><h2>Simulador do sensor</h2></div>
+            <div>
+              <p class="eyebrow">01 / DISPOSITIVO</p>
+              <h2>Simulador do sensor</h2>
+            </div>
             <span class="device-badge"><span class="live-dot"></span> SENSOR ATIVO</span>
           </div>
           <div class="temperature-display">
             <div class="thermometer-icon">♨</div>
-            <div><strong id="largeTemperature">28</strong><span>°C</span><p id="temperatureDescription">Temperatura dentro da faixa segura</p></div>
+            <div><strong id="largeTemperature">28</strong><span>°C</span>
+              <p id="temperatureDescription">Temperatura dentro da faixa segura</p>
+            </div>
           </div>
           <label class="field-label" for="temperatureSlider">Ajuste a leitura do sensor</label>
-          <div class="slider-row"><span>20 °C</span><input id="temperatureSlider" type="range" min="20" max="45" value="28" step="1"><span>45 °C</span></div>
+          <div class="slider-row"><span>20 °C</span><input id="temperatureSlider" type="range" min="20" max="45"
+              value="28" step="1"><span>45 °C</span></div>
           <div class="slider-value"><span>Valor selecionado</span><strong id="sliderValue">28 °C</strong></div>
           <div class="button-row">
             <button id="applyReading" class="button primary">Aplicar leitura <span>→</span></button>
@@ -66,53 +75,84 @@
             <label for="thresholdInput">Limite de alerta (°C)</label>
             <input id="thresholdInput" type="number" min="20" max="45" value="35">
           </div>
-          <p class="helper-note">Dica para a apresentação: aplique 28 °C para mostrar operação normal e depois 40 °C para provocar um alerta.</p>
         </article>
 
         <article class="panel decision-panel">
           <div class="panel-heading">
-            <div><p class="eyebrow">02 / PROCESSAMENTO</p><h2>Onde a decisão acontece?</h2></div>
+            <div>
+              <p class="eyebrow">02 / PROCESSAMENTO</p>
+              <h2>Onde a decisão acontece?</h2>
+            </div>
           </div>
           <div class="mode-switch" role="group" aria-label="Modo de processamento">
-            <button class="mode-button selected" data-mode="edge" aria-pressed="true"><span class="mode-icon">▣</span><span><b>Edge</b><small>Processamento local</small></span></button>
-            <button class="mode-button" data-mode="cloud" aria-pressed="false"><span class="mode-icon">☁</span><span><b>Cloud</b><small>Servidor remoto</small></span></button>
+            <button class="mode-button selected" data-mode="edge" aria-pressed="true"><span
+                class="mode-icon">▣</span><span><b>Edge</b><small>Processamento local</small></span></button>
+            <button class="mode-button" data-mode="cloud" aria-pressed="false"><span
+                class="mode-icon">☁</span><span><b>Cloud</b><small>Servidor remoto</small></span></button>
           </div>
           <div class="architecture" id="architecture">
-            <div class="architecture-node"><span class="node-icon">◉</span><span><b>Sensor IoT</b><small>Gera a leitura</small></span><span class="node-check">✓</span></div>
-            <div class="flow-line"><span></span><small id="flowLabel">Dados seguem para processamento local</small></div>
-            <div class="architecture-node active-node" id="processorNode"><span class="node-icon">▣</span><span><b id="processorName">Dispositivo / Edge</b><small id="processorDescription">Aplica a regra no local</small></span><span class="node-check">✓</span></div>
-            <div class="flow-line"><span></span><small>Resultado da regra</small></div>
-            <div class="architecture-node"><span class="node-icon">⚙</span><span><b>Ação de segurança</b><small id="actionNodeDescription">Decisão executada localmente</small></span><span class="node-check">✓</span></div>
+            <div class="architecture-node"><span class="node-icon">◉</span><span><b>Sensor IoT</b><small>Gera a
+                  leitura</small></span><span class="node-check">✓</span></div>
+            <div class="flow-line"><span></span><small id="flowLabel">Dados seguem para processamento local</small>
+            </div>
+            <div class="architecture-node active-node" id="processorNode"><span class="node-icon">▣</span><span><b
+                  id="processorName">Dispositivo / Edge</b><small id="processorDescription">Aplica a regra no
+                  local</small></span><span class="node-check">✓</span></div>
+            <div class="flow-line" id="sensorFlow">
+              <span></span>
+              <small id="flowLabel">Dados seguem para processamento local</small>
+            </div>
+            <div class="flow-line" id="actionFlow">
+              <span></span>
+              <small id="actionFlowLabel">Resultado da regra</small>
+            </div>
+            <div class="architecture-node"><span class="node-icon">⚙</span><span><b>Ação de segurança</b><small
+                  id="actionNodeDescription">Decisão executada localmente</small></span><span
+                class="node-check">✓</span></div>
           </div>
           <div class="decision-result" id="decisionResult" aria-live="polite">
-            <span class="result-icon">✓</span><div><b>Operação normal</b><p>A temperatura está abaixo do limite.</p></div>
+            <span class="result-icon">✓</span>
+            <div><b>Operação normal</b>
+              <p>A temperatura está abaixo do limite.</p>
+            </div>
           </div>
           <div class="network-control">
             <div><b>Conexão com a internet</b><small>Simule uma queda de conexão</small></div>
-            <button id="internetToggle" class="toggle on" aria-pressed="true"><span></span><b id="internetLabel">Conectada</b></button>
+            <button id="internetToggle" class="toggle on" aria-pressed="true"><span></span><b
+                id="internetLabel">Conectada</b></button>
           </div>
-          <p class="helper-note" id="modeNote">No modo Edge, a regra é executada neste cliente de demonstração; não depende da API para decidir.</p>
+          <p class="helper-note" id="modeNote">No modo Edge, a regra é executada neste cliente de demonstração; não
+            depende da API para decidir.</p>
         </article>
       </section>
 
       <section class="bottom-grid">
         <article class="panel chart-panel">
-          <div class="panel-heading"><div><p class="eyebrow">03 / TELEMETRIA</p><h2>Histórico de leituras</h2></div><span class="chart-legend"><i></i> Temperatura (°C)</span></div>
-          <div class="chart-wrap"><svg id="chart" viewBox="0 0 620 190" role="img" aria-label="Gráfico das últimas leituras de temperatura"></svg></div>
-          <div class="chart-footer"><span id="historyCount">1 leitura registrada</span><button id="clearHistory" class="text-button">Limpar histórico</button></div>
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">03 / TELEMETRIA</p>
+              <h2>Histórico de leituras</h2>
+            </div><span class="chart-legend"><i></i> Temperatura (°C)</span>
+          </div>
+          <div class="chart-wrap"><svg id="chart" viewBox="0 0 620 190" role="img"
+              aria-label="Gráfico das últimas leituras de temperatura"></svg></div>
+          <div class="chart-footer"><span id="historyCount">1 leitura registrada</span><button id="clearHistory"
+              class="text-button">Limpar histórico</button></div>
         </article>
         <article class="panel log-panel">
-          <div class="panel-heading"><div><p class="eyebrow">04 / EVENTOS</p><h2>Registro do sistema</h2></div><span class="log-count" id="logCount">3 eventos</span></div>
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">04 / EVENTOS</p>
+              <h2>Registro do sistema</h2>
+            </div><span class="log-count" id="logCount">3 eventos</span>
+          </div>
           <ol id="eventLog" class="event-log" aria-live="polite"></ol>
         </article>
       </section>
-
-      <section class="explain-strip">
-        <div class="explain-icon">i</div><div><b>O que esta demonstração comprova?</b><p>O modo Edge decide no próprio cliente e continua funcionando quando a conexão simulada cai. O modo Cloud envia a leitura à API Node.js, que calcula e devolve a decisão. O sensor é virtual; não há hardware físico conectado.</p></div>
-      </section>
     </main>
-    <footer><span>EdgeSense <b>·</b> Protótipo educacional de IoT + Edge Computing</span><span>Desenvolvido para demonstração acadêmica</span></footer>
+    <footer><span>EdgeSense <b>·</b> Protótipo de IoT + Edge Computing</span></footer>
   </div>
   <script src="app.js"></script>
 </body>
+
 </html>
